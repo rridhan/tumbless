@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}" class="no-js">
+<head>
+{MobileAppHeaders}
+<meta charset="utf-8">
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+{block:Hidden}
+<!-- 
+Custom theme options in the 'Hidden' block will not show when viewing the source code.
+https://www.tumblr.com/docs/en/custom_themes#theme-options
+-->
+<meta name="text:Disqus shortname" content="">
+<meta name="text:Google analytics ID" content="">
+{/block:Hidden}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+/*
+Theme
+Name: Tumbless
+Description: Basic theme built with Tumblr and Lessframework
+Author: Ridhan Ramdhan
+Author URI: http://ridhan.tumblr.com
+License: http://unlicense.org/
+
+Framework
+Name: Less Framework
+Framework URI: http://lessframework.com
+Framework Author: Joni Korpi
+License: http://opensource.org/licenses/mit-license.php
+*/
+/*	Resets
+	------	*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+a img {border: 0;}
+
+
+
+/*	Typography presets
+	------------------	*/
+
+.huge, h1 {
+	font-size: 68px;
+	line-height: 72px;
+	letter-spacing: -1px;
+}
+
+.large, h2 {
+	font-size: 42px;
+	line-height: 48px;
+}
+
+.bigger, h3 {
+	font-size: 26px;
+	line-height: 36px;
+}
+
+.big, h4 {
+	font-size: 22px;
+	line-height: 30px;
+}
+
+body {
+	font: 16px/24px Georgia, serif;
+}
+
+.small, small {
+	font-size: 13px;
+	line-height: 18px;
+}
+
+/* Selection colours (easy to forget) */
+
+::selection 	 	{background: rgb(255,255,158);}
+::-moz-selection 	{background: rgb(255,255,158);}
+img::selection 		{background: transparent;}
+img::-moz-selection	{background: transparent;}
+body {-webkit-tap-highlight-color: rgb(255,255,158);}
+
+
+
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+	width: 896px;
+	padding: 72px 48px 84px;
+	background: {BackgroundColor};
+	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+h1,h2,h3,h4 {
+    font-family: {TitleFont};
+    font-weight: {TitleFontWeight};
+    color: {TitleColor};
+}
+a {
+    color: {AccentColor};
+}
+
+
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	body {
+		width: 712px;
+		padding: 48px 28px 60px;
+	}
+}
+
+
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+	
+	body {
+		width: 252px;
+		padding: 48px 34px 60px;
+	}
+	
+}
+
+
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	body {
+		width: 436px;
+		padding: 36px 22px 48px;
+	}
+
+}
+
+
+/*	Retina media query.
+	Overrides styles for devices with a 
+	device-pixel-ratio of 2+, such as iPhone 4.
+-----------------------------------------------    */
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2) {
+	
+	body {
+	
+	}
+	
+}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            {block:ShowTitle}<h1><a href="{BlogURL}" title="title">{Title}</a></h1>{/block:ShowTitle}
+        </header>
+        <div class="main">
+            <section class="main-content">
+                {block:SearchPage}
+                <article class="post" id="search-page">
+                    <p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
+                    {block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
+                </article>
+                {/block:SearchPage}
+                {block:TagPage}
+                <article class="post" id="tag-page">
+                    <p>{lang:TagResultCount posts tagged Tag 3}</p>
+                </article>
+                {/block:TagPage}
+                {block:Posts}
+                <article class="post {PostType}" id="{PostID}">
+                {block:Date}
+                {block:NewDayDate}<abbr>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</abbr>{/block:NewDayDate}
+                {block:SameDayDate}<abbr>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</abbr>{/block:SameDayDate}
+                {/block:Date}
+                {block:Text}
+                <header class="post-header">
+                    {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                </header>
+                <div class="post-content">{Body}</div>
+                {/block:Text}
+                {block:Photo}
+                <div class="post-content">
+                    {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}">{LinkCloseTag}
+                    {block:Caption}
+                        <caption>{Caption}</caption>
+                    {/block:Caption}
+                </div>
+                {/block:Photo}
+                {block:Panorama}
+                <div class="post-content">
+                    {LinkOpenTag}<img src="{PhotoURL-Panorama}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+                    {block:Caption}
+                        <caption>{Caption}</caption>
+                    {/block:Caption}
+                </div>
+                {/block:Panorama}
+                {block:Photoset}
+                <div class="post-content">
+                    {block:Photos}
+                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}"height="{PhotoHeight-500}" />
+                    {/block:Photos}
+                    {block:Caption}
+                        <caption>{Caption}</caption>
+                    {/block:Caption}
+                </div>
+                {/block:Photoset}
+                {block:Quote}
+                <div class="posrt-content">
+                    <blockquote>&#8220;{Quote}&#8221;</blockquote>
+                    {block:Source}
+                        <p>&mdash; <cite>{Source}</cite></p>
+                    {/block:Source}
+                </div>
+                {/block:Quote}
+                {block:Link}
+                <header class="post-content">
+                    <h2 class="post-title"><a href="{URL}" {Target}>{Name}</a></h2>
+                </header>
+                <div class="post-content">
+                    {block:Description}
+                        {Description}
+                    {/block:Description}
+                </div>
+                {/block:Link}
+                {block:Chat}
+                <header class="post-content">
+                    {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                </header>
+                <div class="post-content">
+                    <ul>
+                        {block:Lines}
+                            <li>
+                                {block:Label}
+                                    <span>{Label}</span>
+                                {/block:Label}
+                                    <span>{Line}</span>
+                            </li>
+                        {/block:Lines}
+                    </ul>
+                </div>
+                {/block:Chat}
+                {block:Video}
+                <div class="post-content">
+                    {Video-700}
+                    {block:Caption}
+                        <caption>{Caption}</caption>
+                    {/block:Caption}
+                </div>
+                {/block:Video}
+                {block:Audio}
+                <div class="post-content">
+                    {block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}
+                    {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
+                    {block:Caption}
+                        <caption>{Caption}</caption>
+                    {/block:Caption}
+                </div>
+                {/block:Audio}
+                {block:IndexPage}
+                <div class="post-meta">
+                    <span>{LikeButton color="grey"}</span>
+                    <span>{ReblogButton color="grey"}</span>
+                    <span><a href="{Permalink}" class="permalink">{lang:Permalink}</a></span>
+                </div>
+                {/block:IndexPage}
+                {block:PermalinkPage}
+                {block:Date}
+                <footer class="post-footer">
+                    {block:IfDisqusShortname}
+                    <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </div>
+                    {/block:IfDisqusShortname}
+                    {block:IfNotDisqusUsername}
+                    {block:PostNotes}
+                    <div class="post-notes">
+                        {PostNotes-16}
+                    </div>
+                    {/block:PostNotes}
+                    {/block:IfNotDisqusShortname}
+                </footer>
+                {/block:Date}
+                {/block:PermalinkPage}
+                </article>
+                {/block:Posts}
+            </section><!-- .main-content -->
+            {block:PermalinkPagination}
+            <div class="pagination">
+                {block:PreviousPost}<a class="prev"href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
+                {block:NextPost}<a class="next" href="{NextPost}">{lang:Next post}</a>{/block:NextPost}
+            </div>
+            {/block:PermalinkPagination}
+            {block:Pagination}
+            <div class="pagination" id="post-pagination">
+                {block:PreviousPage}<a class="prev" href="{PreviousPage}">{lang:Previous}</a>{/block:PreviousPage}
+                {block:JumpPagination length="5"}
+                    {block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
+                    {block:JumpPage}<a class="jump-page" href="{URL}">{PageNumber}</a>{/block:JumpPage}
+                {/block:JumpPagination}
+                {block:NextPage}<a class="next" href="{NextPage}">{lang:Next}</a>{/block:NextPage}
+            </div>
+            {/block:Pagination}
+        </div><!-- .main -->
+        <aside class="sidebar" id="widget">
+            <div class="widget-container" id="about">
+                <h3 class="widget-title">{lang:About me}</h3>
+                {block:ShowAvatar}<img class="user-avatar" src="{PortraitURL-128}">{/block:ShowAvatar}
+                {block:ShowDescription}{block:Description}<p>{Description}</p>{/block:Description}{/block:ShowDescription}
+            </div>
+            <div class="widget-container" id="search-form">
+                <form id="search" action="/search" method="get">
+                    <input role="textbox" type="search" placeholder="{lang:Search}" name="q" value="{SearchQuery}">
+                    <input role="button" type="submit" value="{lang:Search}">
+                </form>
+            </div>
+            <div class="widget-container" id="nav">
+                <nav>
+                    <ul>
+                        {block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+                         <li><a href="{BlogURL}/archive">{lang:Archive}</a></li>
+                         {block:AskEnabled}<li><a href="{BlogURL}/ask">{AskLabel}</a></li>{/block:AskEnabled}
+                         {block:SubmissionsEnabled}<li><a href="{BlogURL}/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <footer class="footer">
+            <p>{block:ShowTitle}{Title} {/block:ShowTitle}&copy; {CopyrightYears}</p>
+        </footer>
+    </div><!-- .container -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+{block:IfGoogleAnalyticsID}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '{text:Google Analytics ID}', 'auto');
+ga('send', 'pageview');
+</script>
+{/block:IfGoogleAnalyticsID}
+</body>
+</html>
