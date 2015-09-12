@@ -1,24 +1,29 @@
-<!doctype html>
-<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}" class="no-js">
+<html class="no-js" lang="en-us">
 <head>
-{MobileAppHeaders}
-<meta charset="utf-8">
-<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
-{block:Description}
-<meta name="description" content="{MetaDescription}">
-{/block:Description}
-{block:Hidden}
-<!-- 
-Custom theme options in the 'Hidden' block will not show when viewing the source code.
-https://www.tumblr.com/docs/en/custom_themes#theme-options
--->
-<meta name="text:Disqus shortname" content="">
-<meta name="text:Google analytics ID" content="">
-{/block:Hidden}
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="shortcut icon" href="{Favicon}">
-<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-<link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+    {block:Description}
+    <meta name="description" content="{MetaDescription}">
+    {/block:Description}
+    <meta name="author" content="">
+    <meta http-equiv="cleartype" content="on">
+    {block:PermalinkPage}
+    {block:Posts}
+    {block:Date}
+    <link rel="canonical" href="{Permalink}">
+    <link rel="shortlink" href="{ShortURL}">
+    {/block:Date}
+    {/block:Posts}
+    {/block:PermalinkPage}
+    {block:Hidden}
+    <meta name="text:Disqus shortname" content="">
+    <meta name="text:Google analytics ID" content="">
+    {/block:Hidden}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
