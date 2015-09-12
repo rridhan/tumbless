@@ -204,191 +204,205 @@ px      68    160    252    344    436    */
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            {block:ShowTitle}<h1><a href="{BlogURL}" title="title">{Title}</a></h1>{/block:ShowTitle}
+        <header class="masthead">
+            {block:ShowAvatar}
+            <h1>
+              <a href="{BlogURL}" title="{Title}">
+                  <img src="{PortraitURL-128}" alt="Front" id="header-logo">
+              </a>
+            </h1>
+            {/block:ShowAvatar}
+            {block:HideAvatar}
+            <h1>
+              <a href="{BlogURL}" title="{Title}">{Title}</a>
+            </h1>
+            {/block:HideAvatar}
+            <p>{Description}</p>
         </header>
-        <div class="main">
-            <section class="main-content">
-                {block:SearchPage}
-                <article class="post" id="search-page">
-                    <p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
-                    {block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
-                </article>
-                {/block:SearchPage}
-                {block:TagPage}
-                <article class="post" id="tag-page">
-                    <p>{lang:TagResultCount posts tagged Tag 3}</p>
-                </article>
-                {/block:TagPage}
-                {block:Posts}
-                <article class="post {PostType}" id="{PostID}">
-                {block:Date}
-                {block:NewDayDate}<abbr>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</abbr>{/block:NewDayDate}
-                {block:SameDayDate}<abbr>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</abbr>{/block:SameDayDate}
-                {/block:Date}
-                {block:Text}
-                <header class="post-header">
-                    {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-                </header>
-                <div class="post-content">{Body}</div>
-                {/block:Text}
-                {block:Photo}
-                <div class="post-content">
-                    {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}">{LinkCloseTag}
-                    {block:Caption}
-                        <caption>{Caption}</caption>
-                    {/block:Caption}
-                </div>
-                {/block:Photo}
-                {block:Panorama}
-                <div class="post-content">
-                    {LinkOpenTag}<img src="{PhotoURL-Panorama}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
-                    {block:Caption}
-                        <caption>{Caption}</caption>
-                    {/block:Caption}
-                </div>
-                {/block:Panorama}
-                {block:Photoset}
-                <div class="post-content">
-                    {block:Photos}
-                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}"height="{PhotoHeight-500}" />
-                    {/block:Photos}
-                    {block:Caption}
-                        <caption>{Caption}</caption>
-                    {/block:Caption}
-                </div>
-                {/block:Photoset}
-                {block:Quote}
-                <div class="posrt-content">
-                    <blockquote>&#8220;{Quote}&#8221;</blockquote>
-                    {block:Source}
-                        <p>&mdash; <cite>{Source}</cite></p>
-                    {/block:Source}
-                </div>
-                {/block:Quote}
-                {block:Link}
-                <header class="post-content">
-                    <h2 class="post-title"><a href="{URL}" {Target}>{Name}</a></h2>
-                </header>
-                <div class="post-content">
-                    {block:Description}
-                        {Description}
-                    {/block:Description}
-                </div>
-                {/block:Link}
-                {block:Chat}
-                <header class="post-content">
-                    {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-                </header>
-                <div class="post-content">
-                    <ul>
-                        {block:Lines}
-                            <li>
-                                {block:Label}
-                                    <span>{Label}</span>
-                                {/block:Label}
-                                    <span>{Line}</span>
-                            </li>
-                        {/block:Lines}
-                    </ul>
-                </div>
-                {/block:Chat}
-                {block:Video}
-                <div class="post-content">
-                    {Video-700}
-                    {block:Caption}
-                        <caption>{Caption}</caption>
-                    {/block:Caption}
-                </div>
-                {/block:Video}
-                {block:Audio}
-                <div class="post-content">
-                    {block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}
-                    {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
-                    {block:Caption}
-                        <caption>{Caption}</caption>
-                    {/block:Caption}
-                </div>
-                {/block:Audio}
-                {block:IndexPage}
-                <div class="post-meta">
-                    <span>{LikeButton color="grey"}</span>
-                    <span>{ReblogButton color="grey"}</span>
-                    <span><a href="{Permalink}" class="permalink">{lang:Permalink}</a></span>
-                </div>
-                {/block:IndexPage}
-                {block:PermalinkPage}
-                {block:Date}
-                <footer class="post-footer">
-                    {block:IfDisqusShortname}
-                    <div class="comments">
-                    <div id="disqus_thread"></div>
-                    <script type="text/javascript">
-                        (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-                    </script>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
-                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-                    </div>
-                    {/block:IfDisqusShortname}
-                    {block:IfNotDisqusUsername}
-                    {block:PostNotes}
-                    <div class="post-notes">
-                        {PostNotes-16}
-                    </div>
-                    {/block:PostNotes}
-                    {/block:IfNotDisqusShortname}
-                </footer>
-                {/block:Date}
-                {/block:PermalinkPage}
-                </article>
-                {/block:Posts}
-            </section><!-- .main-content -->
-            {block:PermalinkPagination}
-            <div class="pagination">
-                {block:PreviousPost}<a class="prev"href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
-                {block:NextPost}<a class="next" href="{NextPost}">{lang:Next post}</a>{/block:NextPost}
-            </div>
-            {/block:PermalinkPagination}
-            {block:Pagination}
-            <div class="pagination" id="post-pagination">
-                {block:PreviousPage}<a class="prev" href="{PreviousPage}">{lang:Previous}</a>{/block:PreviousPage}
-                {block:JumpPagination length="5"}
-                    {block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
-                    {block:JumpPage}<a class="jump-page" href="{URL}">{PageNumber}</a>{/block:JumpPage}
-                {/block:JumpPagination}
-                {block:NextPage}<a class="next" href="{NextPage}">{lang:Next}</a>{/block:NextPage}
-            </div>
-            {/block:Pagination}
-        </div><!-- .main -->
-        <aside class="sidebar" id="widget">
-            <div class="widget-container" id="about">
-                <h3 class="widget-title">{lang:About me}</h3>
-                {block:ShowAvatar}<img class="user-avatar" src="{PortraitURL-128}">{/block:ShowAvatar}
-                {block:ShowDescription}{block:Description}<p>{Description}</p>{/block:Description}{/block:ShowDescription}
-            </div>
-            <div class="widget-container" id="search-form">
-                <form id="search" action="/search" method="get">
-                    <input role="textbox" type="search" placeholder="{lang:Search}" name="q" value="{SearchQuery}">
-                    <input role="button" type="submit" value="{lang:Search}">
-                </form>
-            </div>
-            <div class="widget-container" id="nav">
-                <nav>
-                    <ul>
-                        {block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
-                         <li><a href="{BlogURL}/archive">{lang:Archive}</a></li>
-                         {block:AskEnabled}<li><a href="{BlogURL}/ask">{AskLabel}</a></li>{/block:AskEnabled}
-                         {block:SubmissionsEnabled}<li><a href="{BlogURL}/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+        <section class="content-wrap">
+        	<div class="content">
+        		{block:SearchPage}
+	                <div class="entry-content" id="search-page">
+	                    <p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
+	                    {block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
+	                </div>
+	                {/block:SearchPage}
+	                {block:TagPage}
+	                <div class="entry-content" id="tag-page">
+	                    <p>{lang:TagResultCount posts tagged Tag 3}</p>
+	                </div>
+	                {/block:TagPage}
+	                {block:Posts}
+	                <article class="hentry {PostType}" id="{PostID}">
+		                {block:Date}
+		                {block:NewDayDate}<time class="updated" datetime="{DayOfWeek}, {Month} {DayOfMonth}, {Year}" pubtime><abbr>{TimeAgo}</abbr></time>{/block:NewDayDate}
+		                {block:SameDayDate}<time class="updated" datetime="{DayOfWeek}, {Month} {DayOfMonth}, {Year}" pubtime><abbr>{TimeAgo}</abbr></time>{/block:SameDayDate}
+		                {/block:Date}
+		                {block:Text}
+		                <header class="entry-header">
+		                    {block:Title}<h2 class="entry-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+		                </header>
+		                <div class="entry-content">{Body}</div>
+		                {/block:Text}
+		                {block:Photo}
+		                <div class="entry-content">
+		                    {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}" height="{PhotoHeight-500}">{LinkCloseTag}
+		                    {block:Caption}
+		                        <caption>{Caption}</caption>
+		                    {/block:Caption}
+		                </div>
+		                {/block:Photo}
+		                {block:Panorama}
+		                <div class="entry-content">
+		                    {LinkOpenTag}<img src="{PhotoURL-Panorama}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+		                    {block:Caption}
+		                        <caption>{Caption}</caption>
+		                    {/block:Caption}
+		                </div>
+		                {/block:Panorama}
+		                {block:Photoset}
+		                <div class="entry-content">
+		                    {block:Photos}
+		                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}"height="{PhotoHeight-500}" />
+		                    {/block:Photos}
+		                    {block:Caption}
+		                        <caption>{Caption}</caption>
+		                    {/block:Caption}
+		                </div>
+		                {/block:Photoset}
+		                {block:Quote}
+		                <div class="entry-content">
+		                    <blockquote>&#8220;{Quote}&#8221;</blockquote>
+		                    {block:Source}
+		                        <p>&mdash; <cite>{Source}</cite></p>
+		                    {/block:Source}
+		                </div>
+		                {/block:Quote}
+		                {block:Link}
+		                <header class="entry-header">
+		                    <h2 class="entry-title"><a href="{URL}" {Target}>{Name}</a></h2>
+		                </header>
+		                <div class="entry-content">
+		                    {block:Description}
+		                        {Description}
+		                    {/block:Description}
+		                </div>
+		                {/block:Link}
+		                {block:Chat}
+		                <header class="entry-header">
+		                    {block:Title}<h2 class="entry-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+		                </header>
+		                <div class="entry-content">
+		                    <ul>
+		                        {block:Lines}
+		                            <li>
+		                                {block:Label}
+		                                    <span>{Label}</span>
+		                                {/block:Label}
+		                                    <span>{Line}</span>
+		                            </li>
+		                        {/block:Lines}
+		                    </ul>
+		                </div>
+		                {/block:Chat}
+		                {block:Video}
+		                <div class="entry-content">
+		                    {Video-700}
+		                    {block:Caption}
+		                        <caption>{Caption}</caption>
+		                    {/block:Caption}
+		                </div>
+		                {/block:Video}
+		                {block:Audio}
+		                <div class="entry-content">
+		                    {block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}
+		                    {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
+		                    {block:Caption}
+		                        <caption>{Caption}</caption>
+		                    {/block:Caption}
+		                </div>
+		                {/block:Audio}
+		                {block:IndexPage}
+		                <footer class="entry-footer">
+		                    <div class="entry-meta">
+		                        <span>{LikeButton color="grey"}</span>
+		                        <span>{ReblogButton color="grey"}</span>
+		                        <span><a href="{Permalink}" class="permalink">{lang:Permalink}</a></span>
+		                    </div>
+		                </footer>
+		                {/block:IndexPage}
+		                {block:PermalinkPage}
+		                {block:Date}
+		                <footer class="entry-footer">
+		                    {block:IfDisqusShortname}
+		                    <div class="entry-comments">
+		                    <div id="disqus_thread"></div>
+		                    <script type="text/javascript">
+		                        (function() {
+		                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		                        dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+		                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		                        })();
+		                    </script>
+		                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+		                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+		                    </div>
+		                    {/block:IfDisqusShortname}
+		                    {block:IfNotDisqusShortname}
+		                    {block:PostNotes}
+		                    <div class="entry-notes">
+		                        {PostNotes-16}
+		                    </div>
+		                    {/block:PostNotes}
+		                    {/block:IfNotDisqusShortname}
+		                </footer>
+		                {/block:Date}
+		                {/block:PermalinkPage}
+	                </article>
+	                {/block:Posts}
+	        	{block:PermalinkPagination}
+	        	<div class="pagination">
+	            	{block:PreviousPost}<a class="prev"href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
+	            	{block:NextPost}<a class="next" href="{NextPost}">{lang:Next post}</a>{/block:NextPost}
+	        	</div>
+	        	{/block:PermalinkPagination}
+	        	{block:Pagination}
+	        	<div class="pagination" id="post-pagination">
+	            	{block:PreviousPage}<a class="prev" href="{PreviousPage}">{lang:Previous}</a>{/block:PreviousPage}
+	            	{block:JumpPagination length="5"}
+	                	{block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
+	                	{block:JumpPage}<a class="jump-page" href="{URL}">{PageNumber}</a>{/block:JumpPage}
+	            	{/block:JumpPagination}
+	            	{block:NextPage}<a class="next" href="{NextPage}">{lang:Next}</a>{/block:NextPage}
+	        	</div>
+	        	{/block:Pagination}
+	        </div>
+	        <aside class="sidebar" id="widget">
+	            <div class="widget-container" id="about">
+	                <h3 class="widget-title">{lang:About me}</h3>
+	                {block:ShowAvatar}<img class="user-avatar" src="{PortraitURL-128}">{/block:ShowAvatar}
+	                {block:ShowDescription}{block:Description}<p>{Description}</p>{/block:Description}{/block:ShowDescription}
+	            </div>
+	            <div class="widget-container" id="search-form">
+	                <form id="search" action="/search" method="get">
+	                    <input role="textbox" type="search" placeholder="{lang:Search}" name="q" value="{SearchQuery}">
+	                    <input role="button" type="submit" value="{lang:Search}">
+	                </form>
+	            </div>
+	            <div class="widget-container" id="nav">
+	                <nav>
+	                    <ul>
+	                        {block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+	                         <li><a href="{BlogURL}/archive">{lang:Archive}</a></li>
+	                         {block:AskEnabled}<li><a href="{BlogURL}/ask">{AskLabel}</a></li>{/block:AskEnabled}
+	                         {block:SubmissionsEnabled}<li><a href="{BlogURL}/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+	                    </ul>
+	                </nav>
+	            </div>
+	        </aside>
+        </section><!-- .content -->
         <footer class="footer">
-            <p>{block:ShowTitle}{Title} {/block:ShowTitle}&copy; {CopyrightYears}</p>
+            <p>{Title} &copy; {CopyrightYears}</p>
         </footer>
     </div><!-- .container -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
